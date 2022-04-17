@@ -23,7 +23,7 @@ class Combiner {
             continue;
         }
         echo $data[$c];
-        echo "\t";
+        echo ",";
         // create a new line aftr the last col of current row
         if($c == $numOfCols - 1){
             echo "\n";
