@@ -57,13 +57,16 @@ class Combiner {
         if (strpos($file, '.csv') !== false) {
             // Open and Read individual CSV file
             $handle = fopen($file, 'r');
-            
-            if ($handle !== false) {
+            if($handle == false){
+              echo 'given file is invalid';
+            }else{
+              if ($handle !== false) {
                 $row = 0;
                 $this->printFile($handle, $file);
+              }
+              // Close individual CSV file 
+              fclose($handle); 
             }
-            // Close individual CSV file 
-            fclose($handle); 
     
         } else {
             echo "[$file] is not a CSV file.";
@@ -86,4 +89,5 @@ for($i = 1; $i < count($argv); $i++){
 // create an new object
 $combiner = new Combiner($inputFiles);
 $combiner->outputFiles();
+
 ?>
